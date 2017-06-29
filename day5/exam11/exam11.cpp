@@ -181,31 +181,31 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		switch (wParam)
 		{
 		case VK_LEFT:
-			if (g_nHeroPosX < 0) {
-				g_nHeroPosX += 6;
+			if (g_nHeroPosX < 1) {
+				g_nHeroPosX += 5;
 			} else {
 				g_nHeroPosX -= 5;
 			}
 			break;
 		case VK_RIGHT:
-			if (g_nHeroPosX < 436) {
-				g_nHeroPosX += 6;
+			if (g_nHeroPosX < 434) {
+				g_nHeroPosX += 5;
 			}
 			else {
 				g_nHeroPosX -= 5;
 			}
 			break;
 		case VK_UP:
-			if (g_nHeroPosY < 0) {
-				g_nHeroPosY += 6;
+			if (g_nHeroPosY < 1) {
+				g_nHeroPosY += 5;
 			}
 			else {
 				g_nHeroPosY -= 5;
 			}
 			break;
 		case VK_DOWN:
-			if (g_nHeroPosY < 436) {
-				g_nHeroPosY += 6;
+			if (g_nHeroPosY < 434) {
+				g_nHeroPosY += 5;
 			}
 			else {
 				g_nHeroPosY -= 5;
