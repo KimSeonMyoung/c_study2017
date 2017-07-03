@@ -1,0 +1,4 @@
+﻿  exam4.cpp
+c:\users\kict-10\desktop\unity3d_c_st\day9\exam4\exam4.cpp(8): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
+  exam4.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day9\Debug\exam4.exe
+  exam4.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day9\Debug\exam4.pdb (Partial PDB)
