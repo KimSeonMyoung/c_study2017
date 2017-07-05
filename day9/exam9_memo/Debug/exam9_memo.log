@@ -1,7 +1,2 @@
-﻿  exam9_memo.cpp
-c:\users\kict-10\desktop\unity3d_c_st\engine\mywin32_engine.h(13): warning C4996: 'wcstok': wcstok has been changed to conform with the ISO C standard, adding an extra context parameter. To use the legacy Microsoft wcstok, define _CRT_NON_CONFORMING_WCSTOK.
-  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\corecrt_wstring.h(261): note: 'wcstok' 선언을 참조하십시오.
-c:\users\kict-10\desktop\unity3d_c_st\engine\mywin32_engine.h(17): warning C4996: 'wcstok': wcstok has been changed to conform with the ISO C standard, adding an extra context parameter. To use the legacy Microsoft wcstok, define _CRT_NON_CONFORMING_WCSTOK.
-  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\corecrt_wstring.h(261): note: 'wcstok' 선언을 참조하십시오.
-  exam9_memo.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day9\Debug\exam9_memo.exe
+﻿  exam9_memo.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day9\Debug\exam9_memo.exe
   exam9_memo.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day9\Debug\exam9_memo.pdb (Partial PDB)

@@ -1,0 +1,8 @@
+﻿  exam8.cpp
+c:\users\kict-10\desktop\unity3d_c_st\exsodos\exam8\exam8.cpp(257): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+c:\users\kict-10\desktop\unity3d_c_st\engine\mywin32_engine.h(13): warning C4996: 'wcstok': wcstok has been changed to conform with the ISO C standard, adding an extra context parameter. To use the legacy Microsoft wcstok, define _CRT_NON_CONFORMING_WCSTOK.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\corecrt_wstring.h(261): note: 'wcstok' 선언을 참조하십시오.
+c:\users\kict-10\desktop\unity3d_c_st\engine\mywin32_engine.h(17): warning C4996: 'wcstok': wcstok has been changed to conform with the ISO C standard, adding an extra context parameter. To use the legacy Microsoft wcstok, define _CRT_NON_CONFORMING_WCSTOK.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\corecrt_wstring.h(261): note: 'wcstok' 선언을 참조하십시오.
+  exam8.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\exsodos\Debug\exam8.exe
+  exam8.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\exsodos\Debug\exam8.pdb (Partial PDB)
