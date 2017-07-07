@@ -1,0 +1,7 @@
+﻿  exam5.cpp
+c:\users\kict-10\desktop\unity3d_c_st\day13\exam5\exam5.cpp(13): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'void *'입니다.
+c:\users\kict-10\desktop\unity3d_c_st\day13\exam5\exam5.cpp(14): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'BYTE *'입니다.
+c:\users\kict-10\desktop\unity3d_c_st\day13\exam5\exam5.cpp(15): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'double *'입니다.
+c:\users\kict-10\desktop\unity3d_c_st\day13\exam5\exam5.cpp(16): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+  exam5.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day13\Debug\exam5.exe
+  exam5.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day13\Debug\exam5.pdb (Partial PDB)
