@@ -1,2 +1,15 @@
-﻿  exam9_memo.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day9\Debug\exam9_memo.exe
-  exam9_memo.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day9\Debug\exam9_memo.pdb (Partial PDB)
+﻿  exam9_memo.cpp
+c:\users\kict-10\desktop\unity3d_c_st\engine\mywin32_engine.h(13): warning C4996: 'wcstok': wcstok has been changed to conform with the ISO C standard, adding an extra context parameter. To use the legacy Microsoft wcstok, define _CRT_NON_CONFORMING_WCSTOK.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\corecrt_wstring.h(261): note: 'wcstok' 선언을 참조하십시오.
+c:\users\kict-10\desktop\unity3d_c_st\engine\mywin32_engine.h(17): warning C4996: 'wcstok': wcstok has been changed to conform with the ISO C standard, adding an extra context parameter. To use the legacy Microsoft wcstok, define _CRT_NON_CONFORMING_WCSTOK.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\corecrt_wstring.h(261): note: 'wcstok' 선언을 참조하십시오.
+c:\users\kict-10\desktop\unity3d_c_st\day9\exam9_memo\exam9_memo.cpp(155): error C2065: 'procMemoDel': 선언되지 않은 식별자입니다.
+c:\users\kict-10\desktop\unity3d_c_st\day9\exam9_memo\exam9_memo.cpp(263): error C2601: 'procMemoIns': 지역 함수 정의가 잘못되었습니다.
+  c:\users\kict-10\desktop\unity3d_c_st\day9\exam9_memo\exam9_memo.cpp(241): note: 이 줄에 짝이 되지 않는 '{'가 들어 있습니다.
+c:\users\kict-10\desktop\unity3d_c_st\day9\exam9_memo\exam9_memo.cpp(312): error C2601: 'procMemoView': 지역 함수 정의가 잘못되었습니다.
+  c:\users\kict-10\desktop\unity3d_c_st\day9\exam9_memo\exam9_memo.cpp(241): note: 이 줄에 짝이 되지 않는 '{'가 들어 있습니다.
+c:\users\kict-10\desktop\unity3d_c_st\day9\exam9_memo\exam9_memo.cpp(241): fatal error C1075: 파일 끝에서 왼쪽 중괄호 '{'이(가) 일치하지 않습니다.
+  utils.cpp
+c:\users\kict-10\desktop\unity3d_c_st\engine\utils.cpp(18): error C2065: 'g_n': 선언되지 않은 식별자입니다.
+c:\users\kict-10\desktop\unity3d_c_st\engine\utils.cpp(19): error C2143: 구문 오류: ';'이(가) '}' 앞에 없습니다.
+  코드를 생성하고 있습니다...
