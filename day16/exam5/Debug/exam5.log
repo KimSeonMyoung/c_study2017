@@ -1,0 +1,7 @@
+﻿  exam5.cpp
+c:\users\kict-10\desktop\unity3d_c_st\day16\exam5\exam5.cpp(170): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kict-10\desktop\unity3d_c_st\day16\exam5\exam5.cpp(170): warning C4244: '=': 'double'에서 'irr::f32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kict-10\desktop\unity3d_c_st\day16\exam5\exam5.cpp(171): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kict-10\desktop\unity3d_c_st\day16\exam5\exam5.cpp(171): warning C4244: '=': 'double'에서 'irr::f32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  exam5.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day16\Debug\exam5.exe
+  exam5.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day16\Debug\exam5.pdb (Partial PDB)
