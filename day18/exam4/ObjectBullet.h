@@ -8,12 +8,13 @@ struct S_ObjectBullet
 	irr::f64 m_fSize;
 	int m_nFSM;
 	double m_flifeTime;
+	
 };
 
+
+extern void ObjectBullet_OnRender(S_ObjectBullet *pThis, Graphics *pGrp);
+extern void ObjectBullet_OnApply(S_ObjectBullet *pThis, double fDelta);
 extern void ObjectBullet_Setup(S_ObjectBullet *pThis, irr::core::vector2df &vStartPos,
 	irr::core::vector2df &vTaegetPos,
 	irr::f64 fVolumeSize,
-	irr::f64 fVelocity
-);
-extern void ObjectBullet_OnRender(S_ObjectBullet *pThis, Graphics *pGrp);
-extern void ObjectBullet_OnApply(S_ObjectBullet *pThis, double fDelta);
+	irr::f64 fVelocity);

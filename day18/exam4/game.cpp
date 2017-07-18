@@ -3,41 +3,112 @@
 
 HWND g_hWnd;
 
-#define MAX_BULLET_LIST 16
-#define MAX_EFFECT_BULLETDIE_LIST 16
+#define MAX_BULLET_LIST 1000
+#define MAX_EFFECT_BULLETDIE_LIST 1000
+#define MAX_PLAYERBULLET_LIST 1000
 
 BYTE g_KeyStatus[256];
-S_ObjectPlayer g_objPlayer;
+S_ObjectPlayer g_objPlayer, *g_PlayerBullet_List[MAX_PLAYERBULLET_LIST];
 S_ObjectBullet *g_pBullet_List[MAX_BULLET_LIST];
+
 S_ObjectEffectBulletDie *g_pEffectBulletDie_List[MAX_EFFECT_BULLETDIE_LIST];
+
+
 
 Image *g_pImgSpaceShip;
 
+
 irr::f64 g_fAcctick = 0;
+irr::f64 g_PlayerAtk = 0;
+
+bool GameOver(S_ObjectPlayer* pThis)
+{
+	if (pThis->m_nlife <= 0) 
+	{
+		return true;
+	}
+
+	return false;
+}
 
 // -1 : 생성 실패
 int AddBullet()
 {
 	int i;
+	Image* playerbulletImg = new Image(L"../../res/fire.png");
 	for (i = 0; i < MAX_BULLET_LIST; i++) {
 		if (g_pBullet_List[i] == NULL) {
 			S_ObjectBullet *ptr = (S_ObjectBullet *)malloc(sizeof(S_ObjectBullet));
-			ObjectBullet_Setup(ptr, irr::core::vector2df(0, -120), g_objPlayer.m_vPosition, 8, rand() % 50 + 20);
+			ObjectBullet_Setup(ptr, irr::core::vector2df(rand()%640-320, -240)/*총알발사 위치*/, g_objPlayer.m_vPosition, rand()%20/*총알크기*/ , rand() % 50 + 200/*총알발사속도*/);
 			g_pBullet_List[i] = ptr;
 			return i;
 		}
 	}
 
+
 	return -1;
 }
+
+int AddBullet1()
+{
+	int i;
+	Image* playerbulletImg = new Image(L"../../res/fire.png");
+	for (i = 0; i < MAX_BULLET_LIST; i++) {
+		if (g_pBullet_List[i] == NULL) {
+			S_ObjectBullet *ptr = (S_ObjectBullet *)malloc(sizeof(S_ObjectBullet));
+			ObjectBullet_Setup(ptr, irr::core::vector2df(rand() % 640 - 320, -240)/*총알발사 위치*/, g_objPlayer.m_vPosition, rand() % 16/*총알크기*/, rand() % 50 + 200/*총알발사속도*/);
+			g_pBullet_List[i] = ptr;
+			return i;
+		}
+	}
+
+
+	return -1;
+}
+int AddBullet2()
+{
+	int i;
+	Image* playerbulletImg = new Image(L"../../res/fire.png");
+	for (i = 0; i < MAX_BULLET_LIST; i++) {
+		if (g_pBullet_List[i] == NULL) {
+			S_ObjectBullet *ptr = (S_ObjectBullet *)malloc(sizeof(S_ObjectBullet));
+			ObjectBullet_Setup(ptr, irr::core::vector2df(rand() % 640 - 320, -240)/*총알발사 위치*/, g_objPlayer.m_vPosition, rand() % 20/*총알크기*/, rand() % 50 + 200/*총알발사속도*/);
+			g_pBullet_List[i] = ptr;
+			return i;
+		}
+	}
+
+
+	return -1;
+}
+
+// 플레이어 발사//////////////////////////
+int AddPlayerBullet()
+{
+	int i;
+	Image* playerbulletImg = new Image(L"../../res/fire.png");
+	for (i = 0; i < MAX_PLAYERBULLET_LIST; i++) {
+		if (g_PlayerBullet_List[i] == NULL) {
+			S_ObjectPlayer *ptr = (S_ObjectPlayer *)malloc(sizeof(S_ObjectPlayer));
+			S_ObjectPlayer_Setup(ptr, irr::core::vector2df(16, 16), playerbulletImg, irr::core::vector2df(16, 16), irr::core::vector2df(16, 16), irr::f64(16));
+			g_PlayerBullet_List[i] = ptr;
+			return i;
+		}
+	}
+
+
+	return -1;
+}
+
 
 int AddEffectBulletDie(irr::core::vector2df pos)
 {
 	int i;
+	Image* img = new Image(L"../../res/boom.png");
 	for (i = 0; i < MAX_EFFECT_BULLETDIE_LIST; i++) {
 		if (g_pEffectBulletDie_List[i] == NULL) {
 			S_ObjectEffectBulletDie *ptr = (S_ObjectEffectBulletDie *)malloc(sizeof(S_ObjectEffectBulletDie));
-			ObjectEffectBulletDie_Setup(ptr, pos);
+			ObjectEffectBulletDie_Setup(ptr, pos, img);
 			g_pEffectBulletDie_List[i] = ptr;
 			return i;
 		}
@@ -72,78 +143,110 @@ void ClearDeadEffectBulletDieObj()
 
 void OnLoop(double fDelta)
 {
-	if (fDelta < 0 || fDelta > 1.0) {
-		fDelta = 0;
-	}
-	//시체처리
-	ClearDeadBulletObj();
-	ClearDeadEffectBulletDieObj();
 
-	//총알 발사
-	g_fAcctick += fDelta;
-	if (g_fAcctick > 3.0) {
-		g_fAcctick = 0.0;
-		AddBullet();
-	}
-	//플레이어 처리
-	S_ObjectPlayer_OnApply(&g_objPlayer, fDelta);
-
-	//총알 처리
-	for (int i = 0; i < MAX_BULLET_LIST; i++) {
-
-		S_ObjectBullet *ptr = g_pBullet_List[i];
-		if (ptr != NULL) {
-			ObjectBullet_OnApply(ptr, fDelta);
+	if(!GameOver(&g_objPlayer))
+	{
+		if (fDelta < 0 || fDelta > 1.0) {
+			fDelta = 0;
 		}
-	}
+		//시체처리
+		ClearDeadBulletObj();
+		ClearDeadEffectBulletDieObj();
 
-	//파괴 효과
-	for (int i = 0; i < MAX_EFFECT_BULLETDIE_LIST; i++) {
+		//총알 발사
+		g_fAcctick += fDelta * 50;
+		if (g_fAcctick > 3.0) {
+			g_fAcctick = 0.0;
+			AddBullet();
+			AddBullet1();
+			AddBullet2();
+		}
+		// 플레이어 총알 발사
+		g_PlayerAtk += fDelta * 10;
+		if (g_PlayerAtk > 3.0) {
+			g_PlayerAtk = 0.0;
 
-		S_ObjectEffectBulletDie *ptr = g_pEffectBulletDie_List[i];
-		if (ptr != NULL) {
-			ObjectEffectBulletDie_OnApply(ptr, fDelta);
+			AddPlayerBullet();
+
+		}
+
+
+		//플레이어 처리
+		S_ObjectPlayer_OnApply(&g_objPlayer, fDelta);
+
+		//총알 처리
+		for (int i = 0; i < MAX_BULLET_LIST; i++) {
+
+			S_ObjectBullet *ptr = g_pBullet_List[i];
+			if (ptr != NULL) {
+				ObjectBullet_OnApply(ptr, fDelta);
+			}
+		}
+
+		//파괴 효과
+		for (int i = 0; i < MAX_EFFECT_BULLETDIE_LIST; i++) {
+
+			S_ObjectEffectBulletDie *ptr = g_pEffectBulletDie_List[i];
+			if (ptr != NULL) {
+				ObjectEffectBulletDie_OnApply(ptr, fDelta);
+			}
 		}
 	}
 }
-
+double tempa = 0;
 void OnRender(double fDelta, Graphics *pGrp)
 {
-	pGrp->Clear(Color(200, 191, 231));
-	if (fDelta > 0) {
-		plusEngine::printf(pGrp, 0, 0, L"fps : %lf", 1.0 / fDelta);
-	}
-	else {
-		plusEngine::printf(pGrp, 0, 0, L"fps : %lf", 1000.f);
-	}
-	Pen pen(Color(0, 0, 0));
-	//Pen pen2(Color(255, 0, 0));
-	pGrp->DrawRectangle(&pen, 0, 0, 320, 240);
-	pGrp->DrawLine(&pen, 0, 120, 320, 120);
-	pGrp->DrawLine(&pen, 160, 0, 160, 240);
+	pGrp->Clear(Color(0, 0, 0));
 
-	Matrix originMat(1, 0, 0, 1, 160, 120);
-	pGrp->SetTransform(&originMat);
 
-	S_ObjectPlayer_OnRender(&g_objPlayer, pGrp);
+	if (!GameOver(&g_objPlayer))
+	{
+		TCHAR szBuf[256];
+		 tempa += fDelta;
+		swprintf(szBuf,L"%.0lf\n", tempa);
+		OutputDebugString(szBuf);
 
-	for (int i = 0; i < 16; i++) {
-		S_ObjectBullet *ptr = g_pBullet_List[i];
-		if (ptr != NULL) {
-			ObjectBullet_OnRender(ptr, pGrp);
+		if (fDelta > 0) {
+			plusEngine::printf(pGrp, 0, 0, L"fps : %lf", 1.0 / fDelta);
 		}
-	}
-	//파괴 효과
-	for (int i = 0; i < MAX_EFFECT_BULLETDIE_LIST; i++) {
-
-		S_ObjectEffectBulletDie *ptr = g_pEffectBulletDie_List[i];
-		if (ptr != NULL) {
-			ObjectEffectBulletDie_OnRender(ptr, pGrp);
+		else {
+			plusEngine::printf(pGrp, 0, 0, L"fps : %lf", 1000.f);
 		}
+		Pen pen(Color(0, 0, 0));
+		//Pen pen2(Color(255, 0, 0));
+		/*pGrp->DrawRectangle(&pen, 0, 0, 640, 480);
+		pGrp->DrawLine(&pen, 0, 240, 640, 240);
+		pGrp->DrawLine(&pen, 320, 0, 320, 480);*/
+
+		Matrix originMat(1, 0, 0, 1, 320, 240);
+		pGrp->SetTransform(&originMat);
+
+		S_ObjectPlayer_OnRender(&g_objPlayer, pGrp);
+
+		for (int i = 0; i < MAX_BULLET_LIST; i++) {
+			S_ObjectBullet *ptr = g_pBullet_List[i];
+			if (ptr != NULL) {
+				ObjectBullet_OnRender(ptr, pGrp);
+			}
+		}
+		//파괴 효과
+		for (int i = 0; i < MAX_EFFECT_BULLETDIE_LIST; i++) {
+
+			S_ObjectEffectBulletDie *ptr = g_pEffectBulletDie_List[i];
+			if (ptr != NULL) {
+				ObjectEffectBulletDie_OnRender(ptr, pGrp);
+			}
+		}
+
+		pGrp->ResetTransform();
 	}
+	else
+	{
+		TCHAR szBuf[256];
+		swprintf(szBuf,L"Game Over!");
 
-	pGrp->ResetTransform();
 
+	}
 }
 
 void OnCreate(HWND hWnd)
@@ -165,7 +268,8 @@ void OnCreate(HWND hWnd)
 
 	g_pImgSpaceShip = new Image(L"../../res/spaceship_crop.png");
 
-	S_ObjectPlayer_Setup(&g_objPlayer, irr::core::vector2df(0, 0), g_pImgSpaceShip);
+	S_ObjectPlayer_Setup(&g_objPlayer, irr::core::vector2df(16, 16), g_pImgSpaceShip, irr::core::vector2df(16,16), irr::core::vector2df(16,16), irr::f64 (16));
+
 	//ObjectBullet_Setup(&g_TestBullet, irr::core::vector2df(-160, -120), g_objPlayer.m_vPosition, 8, 30);
 
 }
@@ -173,6 +277,7 @@ void OnCreate(HWND hWnd)
 void OnDestory(HWND hWnd)
 {
 	delete g_pImgSpaceShip;
+	
 
 	int i;
 	for (i = 0; i < MAX_BULLET_LIST; i++) {

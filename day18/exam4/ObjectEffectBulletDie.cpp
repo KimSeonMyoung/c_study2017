@@ -27,15 +27,19 @@ void ObjectEffectBulletDie_OnRender(S_ObjectEffectBulletDie *pThis, Graphics *pG
 	pGrp->GetTransform(&tempMat);
 	pGrp->TranslateTransform(pThis->m_vPosition.X, pThis->m_vPosition.Y);
 	pGrp->ScaleTransform(pThis->m_fLifeTime, pThis->m_fLifeTime);
-	pGrp->DrawEllipse(&pen, -8, -8, 16, 16);
+	pGrp->DrawImage(pThis->m_pimage, RectF(pThis->m_vPosition.X - 41 / 2, pThis->m_vPosition.Y - 39 / 2, 41, 39));
+
+	
+	//pGrp->DrawEllipse(&pen, -8, -8, 16, 16);
 	pGrp->SetTransform(&tempMat);
 
 }
 
-void ObjectEffectBulletDie_Setup(S_ObjectEffectBulletDie *pThis, irr::core::vector2df &vPos)
+void ObjectEffectBulletDie_Setup(S_ObjectEffectBulletDie *pThis, irr::core::vector2df &vPos, Image *pImg)
 {
 	pThis->m_vPosition = vPos;
 	pThis->m_fLifeTime = 0;
 	pThis->m_nFSM = 0;
+	pThis->m_pimage = pImg;
 
 }

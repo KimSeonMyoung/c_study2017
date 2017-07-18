@@ -1,6 +1,6 @@
 ﻿  ObjectPlayer.cpp
 c:\users\kict-10\desktop\unity3d_c_st\engine\irrlicht-1.8.4\include\vector2d.h(329): warning C4244: '인수': 'const double'에서 'const irr::f32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  c:\users\kict-10\desktop\unity3d_c_st\day18\exam4\objectplayer.cpp(8): note: 컴파일 중인 함수 템플릿 인스턴스화 'irr::core::vector2d<irr::f32> irr::core::operator *<double,irr::f32>(const S,const irr::core::vector2d<irr::f32> &)'에 대한 참조를 확인하십시오.
+  c:\users\kict-10\desktop\unity3d_c_st\day18\exam4\objectplayer.cpp(9): note: 컴파일 중인 함수 템플릿 인스턴스화 'irr::core::vector2d<irr::f32> irr::core::operator *<double,irr::f32>(const S,const irr::core::vector2d<irr::f32> &)'에 대한 참조를 확인하십시오.
           with
           [
               S=double
