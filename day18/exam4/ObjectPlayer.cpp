@@ -54,7 +54,7 @@ void S_ObjectPlayer_Setup(S_ObjectPlayer *pThis,
 
 	pThis->m_pImg = pImg;
 	pThis->m_vPosition = startPos;
-	pThis->m_nlife = 20;
+	pThis->m_nlife = 3;
 
 
 	/*pThis->mPlayerBullet = PlayerBullet;*/
