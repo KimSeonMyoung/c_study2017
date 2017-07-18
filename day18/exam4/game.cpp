@@ -83,22 +83,22 @@ int AddBullet2()
 }
 
 // 플레이어 발사//////////////////////////
-int AddPlayerBullet()
-{
-	int i;
-	Image* playerbulletImg = new Image(L"../../res/fire.png");
-	for (i = 0; i < MAX_PLAYERBULLET_LIST; i++) {
-		if (g_PlayerBullet_List[i] == NULL) {
-			S_ObjectPlayer *ptr = (S_ObjectPlayer *)malloc(sizeof(S_ObjectPlayer));
-			S_ObjectPlayer_Setup(ptr, irr::core::vector2df(16, 16), playerbulletImg, irr::core::vector2df(16, 16), irr::core::vector2df(16, 16), irr::f64(16));
-			g_PlayerBullet_List[i] = ptr;
-			return i;
-		}
-	}
-
-
-	return -1;
-}
+//int AddPlayerBullet()
+//{
+//	int i;
+//	Image* playerbulletImg = new Image(L"../../res/fire.png");
+//	for (i = 0; i < MAX_PLAYERBULLET_LIST; i++) {
+//		if (g_PlayerBullet_List[i] == NULL) {
+//			S_ObjectPlayer *ptr = (S_ObjectPlayer *)malloc(sizeof(S_ObjectPlayer));
+//			S_ObjectPlayer_Setup(ptr, irr::core::vector2df(16, 16), playerbulletImg, irr::core::vector2df(16, 16), irr::core::vector2df(16, 16), irr::f64(16));
+//			g_PlayerBullet_List[i] = ptr;
+//			return i;
+//		}
+//	}
+//
+//
+//	return -1;
+//}
 
 
 int AddEffectBulletDie(irr::core::vector2df pos)
@@ -154,7 +154,7 @@ void OnLoop(double fDelta)
 		ClearDeadEffectBulletDieObj();
 
 		//총알 발사
-		g_fAcctick += fDelta * 50;
+		g_fAcctick += fDelta * 20;
 		if (g_fAcctick > 3.0) {
 			g_fAcctick = 0.0;
 			AddBullet();
@@ -162,13 +162,13 @@ void OnLoop(double fDelta)
 			AddBullet2();
 		}
 		// 플레이어 총알 발사
-		g_PlayerAtk += fDelta * 10;
-		if (g_PlayerAtk > 3.0) {
-			g_PlayerAtk = 0.0;
+		//g_PlayerAtk += fDelta * 10;
+		//if (g_PlayerAtk > 3.0) {
+		//	g_PlayerAtk = 0.0;
 
-			AddPlayerBullet();
+		//	AddPlayerBullet();
 
-		}
+		//}
 
 
 		//플레이어 처리

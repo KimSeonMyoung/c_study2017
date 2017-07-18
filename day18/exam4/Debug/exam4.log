@@ -1,9 +1,13 @@
-﻿  ObjectPlayer.cpp
-c:\users\kict-10\desktop\unity3d_c_st\engine\irrlicht-1.8.4\include\vector2d.h(329): warning C4244: '인수': 'const double'에서 'const irr::f32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  c:\users\kict-10\desktop\unity3d_c_st\day18\exam4\objectplayer.cpp(9): note: 컴파일 중인 함수 템플릿 인스턴스화 'irr::core::vector2d<irr::f32> irr::core::operator *<double,irr::f32>(const S,const irr::core::vector2d<irr::f32> &)'에 대한 참조를 확인하십시오.
-          with
-          [
-              S=double
-          ]
+﻿  game.cpp
+c:\users\kict-10\desktop\unity3d_c_st\day18\exam4\game.cpp(42): warning C4244: '인수': 'int'에서 'irr::f32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kict-10\desktop\unity3d_c_st\day18\exam4\game.cpp(59): warning C4244: '인수': 'int'에서 'irr::f32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kict-10\desktop\unity3d_c_st\day18\exam4\game.cpp(75): warning C4244: '인수': 'int'에서 'irr::f32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  건너뛰고 있습니다... (관련된 변경 내용 없음)
+  exam4.cpp
+  ObjectPlayer.cpp
+  ObjectEffectBulletDie.cpp
+  ObjectBullet.cpp
+  plusEngine.cpp
   exam4.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day18\Debug\exam4.exe
   exam4.vcxproj -> C:\Users\KICT-10\Desktop\unity3d_c_st\day18\Debug\exam4.pdb (Partial PDB)
